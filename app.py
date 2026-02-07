@@ -100,4 +100,5 @@ def update_claim(item_id):
     return redirect(url_for('admin_panel'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',
+    port=10000)
