@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h2 class="mb-4">Welcome to Lost & Found</h2>
+    <a href="{{ url_for('add_lost') }}" class="btn btn-custom btn-lg mb-3">Report Lost Item</a><br>
+    <a href="{{ url_for('search') }}" class="btn btn-secondary btn-lg mb-3">Search Lost Item</a><br>
+    <a href="{{ url_for('login') }}" class="btn btn-dark btn-lg">Admin Panel</a>
+</div>
+{% endblock %}

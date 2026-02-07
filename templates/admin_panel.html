@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+{% block content %}
+<h3 class="mb-4 text-center">Admin Panel</h3>
+<a href="{{ url_for('logout') }}" class="btn btn-danger mb-3">Logout</a>
+<div class="table-responsive">
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Claim Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.item_name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.date }}</td>
+            <td>
+                <form action="{{ url_for('update_status', item_id=item.id) }}" method="POST">
+                    <select name="status" class="form-select" onchange="this.form.submit()">
+                        <option value="Missing" {% if item.status=='Missing' %}selected{% endif %}>Missing</option>
+                        <option value="Found" {% if item.status=='Found' %}selected{% endif %}>Found</option>
+                    </select>
+                </form>
+            </td>
+            <td>
+                <form action="{{ url_for('update_claim', item_id=item.id) }}" method="POST">
+                    <select name="claim_status" class="form-select" onchange="this.form.submit()">
+                        <option value="Unclaimed" {% if item.claim_status=='Unclaimed' %}selected{% endif %}>Unclaimed</option>
+                        <option value="Claimed" {% if item.claim_status=='Claimed' %}selected{% endif %}>Claimed</option>
+                    </select>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

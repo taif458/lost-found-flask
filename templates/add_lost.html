@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Lost Item{% endblock %}
+{% block content %}
+<div class="card card-custom p-4 mx-auto" style="max-width:600px;">
+    <h3 class="mb-4">Report Lost Item</h3>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Item Name</label>
+            <input type="text" class="form-control" name="item_name" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="description" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-custom">Submit</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+{% endblock %}
