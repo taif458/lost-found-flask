@@ -1,19 +1,27 @@
-{% extends "base.html" %}
-{% block title %}Admin Panel{% endblock %}
+﻿{% extends "base.html" %}
+{% block title %}{{ t['admin_title'] }}{% endblock %}
 {% block content %}
-<h3 class="mb-4 text-center">Admin Panel</h3>
-<a href="{{ url_for('logout') }}" class="btn btn-danger mb-3">Logout</a>
+<section class="admin-heading">
+    <div>
+        <span class="eyebrow">{{ t['admin_eyebrow'] }}</span>
+        <h2>{{ t['admin_heading'] }}</h2>
+        <p class="muted-text">{{ t['admin_text'] }}</p>
+    </div>
+    <a href="{{ url_for('logout') }}" class="btn btn-danger-soft">{{ t['logout'] }}</a>
+</section>
+
+<section class="content-card table-card">
 <div class="table-responsive">
-<table class="table table-bordered table-striped table-hover">
-    <thead class="table-dark">
+<table class="table align-middle admin-table">
+    <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Claim Status</th>
+            <th>{{ t['table_id'] }}</th>
+            <th>{{ t['table_name'] }}</th>
+            <th>{{ t['table_item'] }}</th>
+            <th>{{ t['table_description'] }}</th>
+            <th>{{ t['table_date'] }}</th>
+            <th>{{ t['table_status'] }}</th>
+            <th>{{ t['table_claim'] }}</th>
         </tr>
     </thead>
     <tbody>
@@ -27,22 +35,28 @@
             <td>
                 <form action="{{ url_for('update_status', item_id=item.id) }}" method="POST">
                     <select name="status" class="form-select" onchange="this.form.submit()">
-                        <option value="Missing" {% if item.status=='Missing' %}selected{% endif %}>Missing</option>
-                        <option value="Found" {% if item.status=='Found' %}selected{% endif %}>Found</option>
+                        <option value="Missing" {% if item.status=='Missing' %}selected{% endif %}>{{ t['status_missing'] }}</option>
+                        <option value="Found" {% if item.status=='Found' %}selected{% endif %}>{{ t['status_found'] }}</option>
                     </select>
                 </form>
             </td>
             <td>
                 <form action="{{ url_for('update_claim', item_id=item.id) }}" method="POST">
                     <select name="claim_status" class="form-select" onchange="this.form.submit()">
-                        <option value="Unclaimed" {% if item.claim_status=='Unclaimed' %}selected{% endif %}>Unclaimed</option>
-                        <option value="Claimed" {% if item.claim_status=='Claimed' %}selected{% endif %}>Claimed</option>
+                        <option value="Unclaimed" {% if item.claim_status=='Unclaimed' %}selected{% endif %}>{{ t['claim_unclaimed'] }}</option>
+                        <option value="Claimed" {% if item.claim_status=='Claimed' %}selected{% endif %}>{{ t['claim_claimed'] }}</option>
                     </select>
                 </form>
             </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="7" class="empty-state">{{ t['empty_state'] }}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 </div>
+</section>
 {% endblock %}
+

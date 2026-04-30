@@ -1,10 +1,91 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
+﻿{% extends "base.html" %}
+{% block title %}{{ t['home_title'] }}{% endblock %}
 {% block content %}
-<div class="text-center">
-    <h2 class="mb-4">Welcome to Lost & Found</h2>
-    <a href="{{ url_for('add_lost') }}" class="btn btn-custom btn-lg mb-3">Report Lost Item</a><br>
-    <a href="{{ url_for('search') }}" class="btn btn-secondary btn-lg mb-3">Search Lost Item</a><br>
-    <a href="{{ url_for('login') }}" class="btn btn-dark btn-lg">Admin Panel</a>
+<section class="hero-panel">
+    <div class="hero-copy">
+        <span class="eyebrow">{{ t['hero_eyebrow'] }}</span>
+        <h1>{{ t['hero_heading'] }}</h1>
+        <p>
+            {{ t['hero_text'] }}
+        </p>
+        <div class="hero-actions">
+            <a href="{{ url_for('add_lost') }}" class="btn btn-custom btn-lg">{{ t['hero_report'] }}</a>
+            <a href="{{ url_for('search') }}" class="btn btn-outline-custom btn-lg">{{ t['hero_track'] }}</a>
+        </div>
+        <div class="hero-metrics" aria-label="Service highlights">
+            <div>
+                <strong>01</strong>
+                <span>{{ t['metric_reports'] }}</span>
+            </div>
+            <div>
+                <strong>02</strong>
+                <span>{{ t['metric_tracking'] }}</span>
+            </div>
+            <div>
+                <strong>03</strong>
+                <span>{{ t['metric_staff'] }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="airport-visual" aria-hidden="true">
+        <div class="terminal-card">
+            <img class="hero-image" src="{{ url_for('static', filename='lost_found_hero.png') }}" alt="{{ t['hero_caption'] }}">
+            <div class="claim-ticket">
+                <small>{{ t['ticket_report'] }}</small>
+                <strong>48291</strong>
+                <span>{{ t['ticket_review'] }}</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="workflow-section">
+    <div class="section-heading">
+        <span class="eyebrow">{{ t['workflow_title'] }}</span>
+        <p>{{ t['workflow_text'] }}</p>
+    </div>
+    <div class="workflow-grid">
+        <div class="workflow-step">
+            <span>01</span>
+            <strong>{{ t['step_1_title'] }}</strong>
+            <small>{{ t['step_1_text'] }}</small>
+        </div>
+        <div class="workflow-step">
+            <span>02</span>
+            <strong>{{ t['step_2_title'] }}</strong>
+            <small>{{ t['step_2_text'] }}</small>
+        </div>
+        <div class="workflow-step">
+            <span>03</span>
+            <strong>{{ t['step_3_title'] }}</strong>
+            <small>{{ t['step_3_text'] }}</small>
+        </div>
+    </div>
+</section>
+
+<section class="quick-grid" aria-label="Platform options">
+    <a class="action-card" href="{{ url_for('add_lost') }}">
+        <span class="card-icon">+</span>
+        <strong>{{ t['card_report_title'] }}</strong>
+        <small>{{ t['card_report_text'] }}</small>
+    </a>
+    <a class="action-card" href="{{ url_for('search') }}">
+        <span class="card-icon">#</span>
+        <strong>{{ t['card_search_title'] }}</strong>
+        <small>{{ t['card_search_text'] }}</small>
+    </a>
+    <a class="action-card" href="{{ url_for('login') }}">
+        <span class="card-icon">OK</span>
+        <strong>{{ t['card_admin_title'] }}</strong>
+        <small>{{ t['card_admin_text'] }}</small>
+    </a>
+</section>
+
+<div class="trust-strip">
+    <span>{{ t['trust_1'] }}</span>
+    <span>{{ t['trust_2'] }}</span>
+    <span>{{ t['trust_3'] }}</span>
+    <span>{{ t['trust_4'] }}</span>
 </div>
 {% endblock %}
+
