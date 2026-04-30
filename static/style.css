@@ -10,7 +10,7 @@
     --blue: #5f8faa;
     --teal: #6b9b91;
     --gold: #c1a36d;
-    --danger: #b45a52;
+    --danger: #587689;
     --shadow: 0 24px 70px rgba(49, 86, 111, 0.12);
     --shadow-soft: 0 14px 42px rgba(49, 86, 111, 0.08);
 }
@@ -284,12 +284,12 @@ a {
 .btn-danger-soft {
     color: #fff;
     border: 1px solid var(--danger);
-    background: var(--danger);
+    background: linear-gradient(135deg, #587689, #6b8f91);
 }
 
 .btn-danger-soft:hover {
     color: #fff;
-    background: #8f1c13;
+    background: linear-gradient(135deg, #476779, #5d8385);
 }
 
 .airport-visual {
@@ -560,6 +560,12 @@ textarea.form-control {
 .polished-alert {
     border-radius: 8px;
     border-width: 1px;
+}
+
+.alert-neutral {
+    color: #31566f;
+    border-color: #cad9dd;
+    background: #eef5f3;
 }
 
 .result-panel {
