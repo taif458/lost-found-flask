@@ -1,33 +1,34 @@
-{% extends "base.html" %}
-{% block title %}{{ t('report_title') }}{% endblock %}
+﻿{% extends "base.html" %}
+{% block title %}{{ t['report_title'] }}{% endblock %}
 {% block content %}
 <div class="form-layout">
     <section class="content-card form-card">
-        <span class="eyebrow">{{ t('report_eyebrow') }}</span>
-        <h2>{{ t('report_heading') }}</h2>
-        <p class="muted-text">{{ t('report_text') }}</p>
+        <span class="eyebrow">{{ t['report_eyebrow'] }}</span>
+        <h2>{{ t['report_heading'] }}</h2>
+        <p class="muted-text">{{ t['report_text'] }}</p>
         <form method="POST">
         <div class="mb-3">
-            <label class="form-label">{{ t('name_label') }}</label>
-            <input type="text" class="form-control" name="name" placeholder="{{ t('name_placeholder') }}" required>
+            <label class="form-label">{{ t['name_label'] }}</label>
+            <input type="text" class="form-control" name="name" placeholder="{{ t['name_placeholder'] }}" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">{{ t('item_label') }}</label>
-            <input type="text" class="form-control" name="item_name" placeholder="{{ t('item_placeholder') }}" required>
+            <label class="form-label">{{ t['item_label'] }}</label>
+            <input type="text" class="form-control" name="item_name" placeholder="{{ t['item_placeholder'] }}" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">{{ t('description_label') }}</label>
-            <textarea class="form-control" name="description" rows="4" placeholder="{{ t('description_placeholder') }}" required></textarea>
+            <label class="form-label">{{ t['description_label'] }}</label>
+            <textarea class="form-control" name="description" rows="4" placeholder="{{ t['description_placeholder'] }}" required></textarea>
         </div>
         <div class="button-row">
-            <button type="submit" class="btn btn-custom">{{ t('submit_report') }}</button>
-            <a href="{{ url_for('index') }}" class="btn btn-outline-custom">{{ t('back') }}</a>
+            <button type="submit" class="btn btn-custom">{{ t['submit_report'] }}</button>
+            <a href="{{ url_for('index', lang=current_lang) }}" class="btn btn-outline-custom">{{ t['back'] }}</a>
         </div>
         </form>
     </section>
     <aside class="side-note">
-        <strong>{{ t('tip_title') }}</strong>
-        <span>{{ t('tip_text') }}</span>
+        <strong>{{ t['tip_title'] }}</strong>
+        <span>{{ t['tip_text'] }}</span>
     </aside>
 </div>
 {% endblock %}
+

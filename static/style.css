@@ -33,6 +33,14 @@ body {
         var(--surface);
 }
 
+html[lang="ar"] body {
+    direction: rtl;
+}
+
+html[lang="en"] body {
+    direction: ltr;
+}
+
 a {
     color: inherit;
     text-decoration: none;

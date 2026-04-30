@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, abort, render_template, request, redirect, url_for, session
 import random
 from datetime import datetime
 
@@ -215,40 +215,42 @@ def get_locale():
     return session.get("lang", "ar") if session.get("lang") in LANGUAGES else "ar"
 
 
-def translate(key):
-    lang = get_locale()
-    return TRANSLATIONS[lang].get(key, TRANSLATIONS["ar"].get(key, key))
+def set_current_language(lang="ar"):
+    if lang not in LANGUAGES:
+        abort(404)
+    session["lang"] = lang
+    return lang
 
 
 def localized_status(value):
-    return translate("status_found" if value == "Found" else "status_missing")
+    t = TRANSLATIONS[get_locale()]
+    return t["status_found"] if value == "Found" else t["status_missing"]
 
 
 def localized_claim(value):
-    return translate("claim_claimed" if value == "Claimed" else "claim_unclaimed")
+    t = TRANSLATIONS[get_locale()]
+    return t["claim_claimed"] if value == "Claimed" else t["claim_unclaimed"]
 
 @app.context_processor
 def inject_datetime():
     lang = get_locale()
+    other_lang = "en" if lang == "ar" else "ar"
     return dict(
         datetime=datetime,
+        TRANSLATIONS=TRANSLATIONS,
         current_lang=lang,
         html_dir="rtl" if lang == "ar" else "ltr",
-        other_lang="en" if lang == "ar" else "ar",
-        t=translate,
+        other_lang=other_lang,
+        t=TRANSLATIONS[lang],
         localized_status=localized_status,
         localized_claim=localized_claim,
     )
 
 
-@app.route('/language/<lang>')
-def set_language(lang):
-    if lang in LANGUAGES:
-        session['lang'] = lang
-    return redirect(request.referrer or url_for('index'))
-
 @app.route('/')
-def index():
+@app.route('/<lang>')
+def index(lang="ar"):
+    set_current_language(lang)
     return render_template('index.html')
 
 @app.route('/add_lost', methods=['GET', 'POST'])
@@ -296,7 +298,7 @@ def login():
             session['logged_in'] = True
             return redirect(url_for('admin_panel'))
         else:
-            return render_template('login.html', error=translate("login_error"))
+            return render_template('login.html', error=TRANSLATIONS[get_locale()]["login_error"])
     return render_template('login.html')
 
 @app.route('/logout')

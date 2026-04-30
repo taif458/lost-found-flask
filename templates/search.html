@@ -1,54 +1,55 @@
-{% extends "base.html" %}
-{% block title %}{{ t('search_title') }}{% endblock %}
+﻿{% extends "base.html" %}
+{% block title %}{{ t['search_title'] }}{% endblock %}
 {% block content %}
 <div class="form-layout">
 <section class="content-card form-card">
-    <span class="eyebrow">{{ t('search_eyebrow') }}</span>
-    <h2>{{ t('search_heading') }}</h2>
-    <p class="muted-text">{{ t('search_text') }}</p>
+    <span class="eyebrow">{{ t['search_eyebrow'] }}</span>
+    <h2>{{ t['search_heading'] }}</h2>
+    <p class="muted-text">{{ t['search_text'] }}</p>
 
     {% if report_id %}
         <div class="alert alert-success polished-alert">
-            {{ t('report_success') }} <strong>{{ report_id }}</strong>
+            {{ t['report_success'] }} <strong>{{ report_id }}</strong>
         </div>
     {% endif %}
 
     <form method="POST" class="mb-4">
         <div class="mb-3">
-            <label class="form-label">{{ t('report_id_label') }}</label>
-            <input type="text" class="form-control" name="report_id" placeholder="{{ t('report_id_placeholder') }}" required>
+            <label class="form-label">{{ t['report_id_label'] }}</label>
+            <input type="text" class="form-control" name="report_id" placeholder="{{ t['report_id_placeholder'] }}" required>
         </div>
         <div class="button-row">
-            <button type="submit" class="btn btn-custom">{{ t('search_button') }}</button>
-            <a href="{{ url_for('index') }}" class="btn btn-outline-custom">{{ t('back') }}</a>
+            <button type="submit" class="btn btn-custom">{{ t['search_button'] }}</button>
+            <a href="{{ url_for('index', lang=current_lang) }}" class="btn btn-outline-custom">{{ t['back'] }}</a>
         </div>
     </form>
 
     {% if item %}
     <div class="result-panel">
         <div class="result-title">
-            <h3>{{ t('details_title') }}</h3>
+            <h3>{{ t['details_title'] }}</h3>
             <span class="status-pill">{{ localized_status(item.status) }}</span>
         </div>
         <dl class="details-grid">
-            <div><dt>{{ t('field_id') }}</dt><dd>{{ item.id }}</dd></div>
-            <div><dt>{{ t('field_name') }}</dt><dd>{{ item.name }}</dd></div>
-            <div><dt>{{ t('field_item') }}</dt><dd>{{ item.item_name }}</dd></div>
-            <div><dt>{{ t('field_date') }}</dt><dd>{{ item.date }}</dd></div>
-            <div class="wide"><dt>{{ t('field_description') }}</dt><dd>{{ item.description }}</dd></div>
-            <div><dt>{{ t('field_status') }}</dt><dd>{{ localized_status(item.status) }}</dd></div>
-            <div><dt>{{ t('field_claim') }}</dt><dd>{{ localized_claim(item.claim_status) }}</dd></div>
+            <div><dt>{{ t['field_id'] }}</dt><dd>{{ item.id }}</dd></div>
+            <div><dt>{{ t['field_name'] }}</dt><dd>{{ item.name }}</dd></div>
+            <div><dt>{{ t['field_item'] }}</dt><dd>{{ item.item_name }}</dd></div>
+            <div><dt>{{ t['field_date'] }}</dt><dd>{{ item.date }}</dd></div>
+            <div class="wide"><dt>{{ t['field_description'] }}</dt><dd>{{ item.description }}</dd></div>
+            <div><dt>{{ t['field_status'] }}</dt><dd>{{ localized_status(item.status) }}</dd></div>
+            <div><dt>{{ t['field_claim'] }}</dt><dd>{{ localized_claim(item.claim_status) }}</dd></div>
         </dl>
     </div>
     {% elif searched %}
     <div class="alert alert-warning polished-alert">
-        {{ t('not_found') }}
+        {{ t['not_found'] }}
     </div>
     {% endif %}
 </section>
 <aside class="side-note">
-    <strong>{{ t('keep_id_title') }}</strong>
-    <span>{{ t('keep_id_text') }}</span>
+    <strong>{{ t['keep_id_title'] }}</strong>
+    <span>{{ t['keep_id_text'] }}</span>
 </aside>
 </div>
 {% endblock %}
+
