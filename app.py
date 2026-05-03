@@ -1,9 +1,11 @@
+import os
+
 from flask import Flask, abort, render_template, request, redirect, url_for, session
 import random
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'secretkey123' 
+app.secret_key = os.environ.get("SECRET_KEY", "secretkey123")
 
 
 items = []
@@ -72,7 +74,7 @@ TRANSLATIONS = {
         "search_text": "أدخل رقم البلاغ الذي حصلت عليه بعد التسجيل لمعرفة آخر حالة مسجلة.",
         "report_success": "تم تسجيل البلاغ بنجاح. رقم البلاغ الخاص بك:",
         "report_id_label": "رقم البلاغ",
-        "report_id_placeholder": "مثال: 48291",
+        "report_id_placeholder": "مثال: 73926",
         "search_button": "بحث",
         "details_title": "تفاصيل البلاغ",
         "field_id": "رقم البلاغ",
@@ -170,7 +172,7 @@ TRANSLATIONS = {
         "search_text": "Enter the report number you received after submission to see the latest recorded status.",
         "report_success": "Your report was submitted successfully. Your report ID:",
         "report_id_label": "Report ID",
-        "report_id_placeholder": "Example: 48291",
+        "report_id_placeholder": "Example: 73926",
         "search_button": "Search",
         "details_title": "Report Details",
         "field_id": "Report ID",
@@ -327,4 +329,6 @@ def update_claim(item_id):
     return redirect(url_for('admin_panel'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    debug = os.environ.get("FLASK_DEBUG", "0") == "1"
+    app.run(host="0.0.0.0", port=port, debug=debug)

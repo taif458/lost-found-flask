@@ -1,22 +1,28 @@
 :root {
-    --ink: #243241;
-    --muted: #6f7d8b;
-    --line: #dfe8ee;
-    --line-strong: #cbd9e0;
+    --ink: #172735;
+    --ink-soft: #34495a;
+    --muted: #6c7b88;
+    --line: #d8e4eb;
+    --line-strong: #b9cbd7;
     --paper: #ffffff;
-    --paper-soft: #fbfcfb;
-    --surface: #f4f7f6;
-    --navy: #31566f;
-    --blue: #5f8faa;
-    --teal: #6b9b91;
-    --gold: #c1a36d;
-    --danger: #b45a52;
-    --shadow: 0 24px 70px rgba(49, 86, 111, 0.12);
-    --shadow-soft: 0 14px 42px rgba(49, 86, 111, 0.08);
+    --paper-soft: #f7fafb;
+    --surface: #edf3f5;
+    --deep: #143642;
+    --teal: #1f7a8c;
+    --mint: #34a08c;
+    --gold: #f2b35d;
+    --coral: #ef6f5e;
+    --danger: #b94b40;
+    --shadow: 0 22px 60px rgba(20, 54, 66, 0.12);
+    --shadow-soft: 0 12px 34px rgba(20, 54, 66, 0.08);
 }
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
 }
 
 body {
@@ -27,10 +33,10 @@ body {
     color: var(--ink);
     font-family: Tahoma, Arial, sans-serif;
     background:
-        radial-gradient(circle at 18% 4%, rgba(193, 163, 109, 0.1), transparent 28%),
-        radial-gradient(circle at 84% 12%, rgba(107, 155, 145, 0.12), transparent 30%),
-        linear-gradient(120deg, rgba(95, 143, 170, 0.06), rgba(107, 155, 145, 0.055)),
-        var(--surface);
+        linear-gradient(90deg, rgba(20, 54, 66, 0.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(20, 54, 66, 0.035) 1px, transparent 1px),
+        linear-gradient(135deg, #f9fbfc 0%, #edf3f5 52%, #f7fafb 100%);
+    background-size: 34px 34px, 34px 34px, auto;
 }
 
 html[lang="ar"] body {
@@ -50,14 +56,14 @@ a {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: rgba(255, 255, 255, 0.86);
+    border-bottom: 1px solid rgba(216, 228, 235, 0.9);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 8px 28px rgba(49, 86, 111, 0.045);
+    box-shadow: 0 10px 30px rgba(20, 54, 66, 0.06);
 }
 
 .app-nav {
-    min-height: 78px;
+    min-height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,8 +83,10 @@ a {
     place-items: center;
     border-radius: 8px;
     color: #fff;
-    background: linear-gradient(135deg, #426b80, var(--teal));
-    box-shadow: 0 10px 25px rgba(49, 86, 111, 0.18);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%),
+        linear-gradient(135deg, var(--deep), var(--teal));
+    box-shadow: 0 12px 26px rgba(31, 122, 140, 0.22);
     font-size: 0.84rem;
     font-weight: 900;
     letter-spacing: 0;
@@ -90,7 +98,8 @@ a {
 }
 
 .brand strong {
-    font-size: 1.05rem;
+    color: var(--deep);
+    font-size: 1.04rem;
 }
 
 .brand small {
@@ -101,53 +110,53 @@ a {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     padding: 6px;
-    border: 1px solid rgba(203, 217, 224, 0.72);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(216, 228, 235, 0.95);
+    border-radius: 8px;
+    background: rgba(247, 250, 251, 0.9);
 }
 
 .nav-actions a {
-    padding: 10px 15px;
+    padding: 10px 14px;
     border-radius: 8px;
-    color: var(--muted);
-    font-weight: 700;
+    color: var(--ink-soft);
+    font-weight: 800;
     line-height: 1;
 }
 
 .nav-actions a:hover {
-    color: var(--navy);
-    background: #eef5f3;
+    color: var(--deep);
+    background: #e8f3f4;
 }
 
 .language-toggle {
-    color: var(--navy) !important;
-    border: 1px solid #cad9dd;
-    background: #f9fbfb;
+    color: var(--deep) !important;
+    border: 1px solid var(--line-strong);
+    background: var(--paper);
 }
 
 .page-shell {
     width: 100%;
     flex: 1;
     padding-top: 34px;
-    padding-bottom: 54px;
+    padding-bottom: 56px;
 }
 
 .hero-panel {
     position: relative;
     overflow: hidden;
     display: grid;
-    grid-template-columns: minmax(0, 0.98fr) minmax(360px, 1.02fr);
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.92fr);
     align-items: center;
-    gap: 44px;
-    min-height: 560px;
-    padding: clamp(30px, 5vw, 58px);
-    border: 1px solid rgba(203, 217, 224, 0.88);
+    gap: clamp(26px, 4vw, 54px);
+    min-height: 590px;
+    padding: clamp(28px, 5vw, 62px);
+    border: 1px solid rgba(216, 228, 235, 0.95);
     border-radius: 8px;
     background:
-        linear-gradient(115deg, rgba(255, 255, 255, 0.97), rgba(251, 252, 251, 0.91)),
-        linear-gradient(135deg, rgba(95, 143, 170, 0.12), rgba(193, 163, 109, 0.08));
+        linear-gradient(115deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.88) 62%, rgba(232, 243, 244, 0.82)),
+        linear-gradient(135deg, rgba(31, 122, 140, 0.08), rgba(242, 179, 93, 0.08));
     box-shadow: var(--shadow);
 }
 
@@ -156,28 +165,28 @@ a {
     position: absolute;
     inset-inline-start: 0;
     top: 0;
-    width: 7px;
+    width: 8px;
     height: 100%;
-    background: linear-gradient(var(--gold), var(--teal), var(--navy));
+    background: linear-gradient(var(--teal), var(--gold), var(--coral));
 }
 
 .hero-panel::after {
     content: "";
     position: absolute;
-    inset-inline: 36px;
-    bottom: 24px;
+    inset-inline: 42px;
+    bottom: 30px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(49, 86, 111, 0.22), transparent);
+    background: linear-gradient(90deg, transparent, rgba(20, 54, 66, 0.18), transparent);
 }
 
 .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     margin-bottom: 12px;
     color: var(--teal);
     font-size: 0.82rem;
-    font-weight: 800;
+    font-weight: 900;
 }
 
 .eyebrow::before {
@@ -188,51 +197,20 @@ a {
 }
 
 .hero-copy h1 {
-    max-width: 680px;
+    max-width: 760px;
     margin: 0;
-    font-size: clamp(2.15rem, 4.5vw, 4.65rem);
-    line-height: 1.14;
-    font-weight: 800;
+    color: var(--deep);
+    font-size: clamp(2.05rem, 4.4vw, 4.55rem);
+    font-weight: 900;
+    line-height: 1.12;
 }
 
 .hero-copy p {
-    max-width: 650px;
+    max-width: 670px;
     margin: 18px 0 0;
     color: var(--muted);
     font-size: 1.08rem;
     line-height: 1.9;
-}
-
-.hero-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    max-width: 650px;
-    margin-top: 30px;
-}
-
-.hero-metrics div {
-    padding: 15px 14px;
-    border: 1px solid rgba(203, 217, 224, 0.9);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.72);
-}
-
-.hero-metrics strong,
-.hero-metrics span {
-    display: block;
-}
-
-.hero-metrics strong {
-    color: var(--gold);
-    font-size: 0.82rem;
-    font-weight: 900;
-}
-
-.hero-metrics span {
-    margin-top: 4px;
-    color: var(--navy);
-    font-weight: 800;
 }
 
 .hero-actions,
@@ -245,8 +223,8 @@ a {
 
 .btn {
     border-radius: 8px;
-    font-weight: 800;
-    padding: 0.78rem 1.24rem;
+    font-weight: 900;
+    padding: 0.78rem 1.22rem;
     transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
 
@@ -256,29 +234,29 @@ a {
 
 .btn-custom {
     color: #fff;
-    border: 1px solid var(--navy);
-    background: linear-gradient(135deg, #426b80, var(--blue));
-    box-shadow: 0 12px 24px rgba(49, 86, 111, 0.17);
+    border: 1px solid var(--deep);
+    background: linear-gradient(135deg, var(--deep), var(--teal));
+    box-shadow: 0 14px 28px rgba(31, 122, 140, 0.22);
 }
 
 .btn-custom:hover,
 .btn-custom:focus {
     color: #fff;
-    border-color: #294b61;
-    background: linear-gradient(135deg, #294b61, #527f98);
+    border-color: #0f2932;
+    background: linear-gradient(135deg, #0f2932, #176b7b);
 }
 
 .btn-outline-custom {
-    color: var(--navy);
-    border: 1px solid #b9c8d8;
+    color: var(--deep);
+    border: 1px solid var(--line-strong);
     background: #fff;
 }
 
 .btn-outline-custom:hover,
 .btn-outline-custom:focus {
-    color: var(--navy);
-    border-color: var(--blue);
-    background: #eef6f5;
+    color: var(--deep);
+    border-color: var(--teal);
+    background: #e8f3f4;
 }
 
 .btn-danger-soft {
@@ -289,50 +267,88 @@ a {
 
 .btn-danger-soft:hover {
     color: #fff;
-    background: #8f1c13;
+    background: #96362e;
+}
+
+.hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 680px;
+    margin-top: 30px;
+}
+
+.hero-metrics div {
+    min-height: 86px;
+    padding: 16px 14px;
+    border: 1px solid rgba(216, 228, 235, 0.95);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.76);
+}
+
+.hero-metrics strong,
+.hero-metrics span {
+    display: block;
+}
+
+.hero-metrics strong {
+    color: var(--coral);
+    font-size: 0.82rem;
+    font-weight: 900;
+}
+
+.hero-metrics span {
+    margin-top: 4px;
+    color: var(--deep);
+    font-weight: 900;
 }
 
 .airport-visual {
-    min-height: 390px;
+    min-height: 420px;
 }
 
-.terminal-card {
+.vector-stage {
     position: relative;
-    min-height: 410px;
+    min-height: 440px;
     overflow: hidden;
-    border: 1px solid #c6d5e2;
+    border: 1px solid #c5d8e2;
     border-radius: 8px;
-    background: #e6eeef;
-    box-shadow: 0 24px 55px rgba(49, 86, 111, 0.14);
+    background:
+        linear-gradient(180deg, #ffffff, #edf7f7 58%, #dbe9ef);
+    box-shadow: 0 24px 58px rgba(20, 54, 66, 0.16);
 }
 
-.terminal-card::after {
+.vector-stage::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 55%, rgba(49, 86, 111, 0.18));
+    inset: 20px;
+    border: 1px solid rgba(20, 54, 66, 0.08);
+    border-radius: 8px;
     pointer-events: none;
 }
 
-.hero-image {
+.airport-vector {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    inset: 8px 8px auto;
+    width: calc(100% - 16px);
+    height: auto;
+}
+
+.claim-ticket,
+.scan-card {
+    position: absolute;
+    z-index: 2;
+    border: 1px solid #d7e4ec;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 34px rgba(20, 54, 66, 0.13);
 }
 
 .claim-ticket {
-    position: absolute;
-    inset-inline-start: 26px;
-    bottom: 26px;
-    z-index: 2;
-    min-width: 170px;
+    inset-inline-start: 24px;
+    bottom: 24px;
+    min-width: 176px;
     padding: 18px;
-    border: 1px solid #d9e3ec;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 14px 30px rgba(49, 86, 111, 0.13);
 }
 
 .claim-ticket small,
@@ -344,9 +360,28 @@ a {
 .claim-ticket strong {
     display: block;
     margin: 2px 0 6px;
-    color: var(--navy);
+    color: var(--deep);
     font-size: 1.45rem;
     letter-spacing: 0;
+}
+
+.scan-card {
+    inset-inline-end: 24px;
+    top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    color: var(--deep);
+    font-weight: 900;
+}
+
+.scan-card span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--mint);
+    box-shadow: 0 0 0 5px rgba(52, 160, 140, 0.14);
 }
 
 .quick-grid {
@@ -359,7 +394,10 @@ a {
 .action-card,
 .content-card,
 .side-note,
-.trust-strip {
+.trust-strip,
+.section-heading,
+.workflow-step,
+.admin-heading {
     border: 1px solid var(--line);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.94);
@@ -367,7 +405,7 @@ a {
 }
 
 .action-card {
-    min-height: 174px;
+    min-height: 178px;
     display: grid;
     align-content: start;
     gap: 10px;
@@ -376,9 +414,9 @@ a {
 }
 
 .action-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(95, 143, 170, 0.45);
-    box-shadow: 0 18px 45px rgba(49, 86, 111, 0.12);
+    transform: translateY(-3px);
+    border-color: rgba(31, 122, 140, 0.48);
+    box-shadow: 0 20px 48px rgba(20, 54, 66, 0.13);
 }
 
 .card-icon {
@@ -388,18 +426,27 @@ a {
     place-items: center;
     border-radius: 8px;
     color: #fff;
-    background: linear-gradient(135deg, var(--navy), var(--teal));
+    background: linear-gradient(135deg, var(--deep), var(--mint));
     font-weight: 900;
 }
 
+.action-card:nth-child(2) .card-icon {
+    background: linear-gradient(135deg, var(--teal), var(--gold));
+}
+
+.action-card:nth-child(3) .card-icon {
+    background: linear-gradient(135deg, var(--coral), var(--deep));
+}
+
 .action-card strong {
+    color: var(--deep);
     font-size: 1.08rem;
 }
 
 .action-card small,
 .muted-text {
     color: var(--muted);
-    line-height: 1.8;
+    line-height: 1.82;
 }
 
 .trust-strip {
@@ -414,30 +461,22 @@ a {
 .trust-strip span {
     padding: 7px 12px;
     border-radius: 999px;
-    color: var(--navy);
-    background: #eef5f3;
-    font-weight: 700;
+    color: var(--deep);
+    background: #e8f3f4;
+    font-weight: 800;
 }
 
 .workflow-section {
     display: grid;
-    grid-template-columns: minmax(260px, 0.68fr) minmax(0, 1.32fr);
-    gap: 20px;
+    grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+    gap: 18px;
     margin-top: 22px;
     align-items: stretch;
 }
 
-.section-heading,
-.workflow-step {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-soft);
-}
-
 .section-heading {
     padding: 24px;
-    border-inline-start: 4px solid var(--gold);
+    border-inline-start: 5px solid var(--gold);
 }
 
 .section-heading p {
@@ -454,9 +493,9 @@ a {
 
 .workflow-step {
     position: relative;
-    min-height: 164px;
-    padding: 22px;
+    min-height: 168px;
     overflow: hidden;
+    padding: 22px;
 }
 
 .workflow-step::before {
@@ -464,8 +503,8 @@ a {
     position: absolute;
     inset-inline: 22px;
     top: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--teal));
+    height: 4px;
+    background: linear-gradient(90deg, var(--teal), var(--gold), var(--coral));
 }
 
 .workflow-step span,
@@ -475,14 +514,14 @@ a {
 }
 
 .workflow-step span {
-    color: var(--gold);
+    color: var(--coral);
     font-size: 0.82rem;
     font-weight: 900;
 }
 
 .workflow-step strong {
     margin-top: 14px;
-    color: var(--navy);
+    color: var(--deep);
     font-size: 1.04rem;
 }
 
@@ -508,37 +547,53 @@ a {
 .login-card h2,
 .admin-heading h2 {
     margin: 0 0 8px;
-    font-size: 1.7rem;
-    font-weight: 800;
+    color: var(--deep);
+    font-size: 1.75rem;
+    font-weight: 900;
 }
 
 .form-label {
     margin-bottom: 8px;
     color: var(--ink);
-    font-weight: 800;
+    font-weight: 900;
 }
 
 .form-control,
 .form-select {
     min-height: 50px;
-    border: 1px solid #c7d4e2;
+    border: 1px solid #c6d7e2;
     border-radius: 8px;
     background-color: #fff;
 }
 
 .form-control:focus,
 .form-select:focus {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 0.2rem rgba(95, 143, 170, 0.16);
+    border-color: var(--teal);
+    box-shadow: 0 0 0 0.2rem rgba(31, 122, 140, 0.16);
 }
 
 textarea.form-control {
-    min-height: 130px;
+    min-height: 132px;
 }
 
 .side-note {
+    position: relative;
+    overflow: hidden;
     padding: 24px;
-    border-top: 4px solid var(--gold);
+    border-top: 5px solid var(--gold);
+}
+
+.side-note::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 72px;
+    margin-top: 20px;
+    border: 1px solid #dbe8ee;
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, transparent 0 44%, rgba(31, 122, 140, 0.16) 44% 48%, transparent 48%),
+        linear-gradient(90deg, rgba(242, 179, 93, 0.28), rgba(52, 160, 140, 0.18));
 }
 
 .side-note strong,
@@ -548,7 +603,7 @@ textarea.form-control {
 
 .side-note strong {
     margin-bottom: 8px;
-    color: var(--navy);
+    color: var(--deep);
     font-size: 1.05rem;
 }
 
@@ -565,9 +620,9 @@ textarea.form-control {
 .result-panel {
     margin-top: 18px;
     padding: 22px;
-    border: 1px solid #d7e0ea;
+    border: 1px solid #d7e4ec;
     border-radius: 8px;
-    background: #f8fbfd;
+    background: #f7fbfc;
 }
 
 .result-title {
@@ -580,16 +635,17 @@ textarea.form-control {
 
 .result-title h3 {
     margin: 0;
+    color: var(--deep);
     font-size: 1.25rem;
-    font-weight: 800;
+    font-weight: 900;
 }
 
 .status-pill {
     padding: 6px 11px;
     border-radius: 999px;
-    color: #37685f;
-    background: #e5f3ef;
-    font-weight: 800;
+    color: #176554;
+    background: #e2f4ef;
+    font-weight: 900;
 }
 
 .details-grid {
@@ -601,7 +657,7 @@ textarea.form-control {
 
 .details-grid div {
     padding: 15px;
-    border: 1px solid #dce5ee;
+    border: 1px solid #dce8ee;
     border-radius: 8px;
     background: #fff;
 }
@@ -617,7 +673,8 @@ textarea.form-control {
 
 .details-grid dd {
     margin: 3px 0 0;
-    font-weight: 800;
+    color: var(--ink);
+    font-weight: 900;
 }
 
 .auth-shell {
@@ -637,10 +694,6 @@ textarea.form-control {
     gap: 18px;
     margin-bottom: 20px;
     padding: 24px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.88);
-    box-shadow: var(--shadow-soft);
 }
 
 .table-card {
@@ -654,27 +707,31 @@ textarea.form-control {
 
 .admin-table thead th {
     color: #fff;
-    background: #426b80;
+    background: var(--deep);
     border: 0;
     white-space: nowrap;
     padding: 16px;
 }
 
 .admin-table td {
-    border-color: #e3e9f0;
+    border-color: #e3edf2;
     vertical-align: middle;
     padding: 14px 16px;
 }
 
 .admin-table tbody tr:hover {
-    background: #f4f8f7;
+    background: #f3f9f9;
+}
+
+.admin-table .form-select {
+    min-width: 150px;
 }
 
 .empty-state {
     padding: 36px;
     color: var(--muted);
     text-align: center;
-    font-weight: 800;
+    font-weight: 900;
 }
 
 .site-footer {
@@ -682,8 +739,8 @@ textarea.form-control {
     justify-content: center;
     gap: 16px;
     padding: 18px;
-    color: #e9f1ef;
-    background: #31566f;
+    color: #edf7f7;
+    background: var(--deep);
 }
 
 [dir="ltr"] .brand,
@@ -714,6 +771,10 @@ textarea.form-control {
     .hero-panel {
         min-height: auto;
     }
+
+    .airport-visual {
+        min-height: 390px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -742,21 +803,31 @@ textarea.form-control {
         padding: 22px;
     }
 
-    .hero-panel {
-        min-height: auto;
+    .hero-copy h1 {
+        font-size: 2.02rem;
     }
 
-    .airport-visual {
-        min-height: 280px;
+    .airport-visual,
+    .vector-stage {
+        min-height: 310px;
     }
 
-    .terminal-card {
-        min-height: 280px;
+    .airport-vector {
+        width: 112%;
+        inset-inline-start: -6%;
     }
 
-    .terminal-card img {
-        width: 100%;
-        bottom: auto;
+    .claim-ticket {
+        inset-inline-start: 16px;
+        bottom: 16px;
+        min-width: 150px;
+        padding: 14px;
+    }
+
+    .scan-card {
+        inset-inline-end: 16px;
+        top: 16px;
+        max-width: 150px;
     }
 
     .trust-strip,
